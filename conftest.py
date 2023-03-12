@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from tests.definitions import *
+from definitions import *
 
 @pytest.fixture
 def driver():
