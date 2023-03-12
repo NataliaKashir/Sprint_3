@@ -1,13 +1,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from definitions import *
 
 class TestLogout:
-    def test_private_account_logout_success(self, driver, login_page, register_user,
-                                                      main_page_private_account_btn, login_page_enter_btn,
-                                                      login_page_login, login_page_password,
-                                                      private_account_header, private_account_logout_btn,
-                                                      main_page_order_btn, login_page_header):
+    def test_private_account_logout_success(self, driver, register_user):
         if register_user['email']:
             driver.get(login_page)
             # login account
@@ -28,4 +25,3 @@ class TestLogout:
                 expected_conditions.visibility_of_element_located((By.XPATH, login_page_header)))
 
             assert driver.current_url == login_page
-            driver.quit()

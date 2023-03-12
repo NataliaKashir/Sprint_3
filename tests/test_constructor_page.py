@@ -2,12 +2,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import time
+from definitions import *
 
 class TestConstructorPage:
-    def test_constructor_page_souses_scroll_success(self, driver, main_page,
-                                            constructor_link_buns,
-                                            constructor_link_souses,
-                                            constructor_tab_souses):
+    def test_constructor_page_souses_scroll_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_souses)))
@@ -19,12 +17,8 @@ class TestConstructorPage:
         time.sleep(1)
         tab_y = driver.find_element(By.XPATH, constructor_link_souses).location['y']
         assert (start_y - start_margin) == tab_y
-        driver.quit()
 
-    def test_constructor_page_fillings_scroll_success(self, driver, main_page,
-                                            constructor_link_buns,
-                                            constructor_link_fillings,
-                                            constructor_tab_fillings):
+    def test_constructor_page_fillings_scroll_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_fillings)))
@@ -36,13 +30,8 @@ class TestConstructorPage:
         time.sleep(1)
         tab_y = driver.find_element(By.XPATH, constructor_link_fillings).location['y']
         assert (start_y - start_margin) == tab_y
-        driver.quit()
 
-    def test_constructor_page_buns_scroll_success(self, driver, main_page,
-                                            constructor_link_buns,
-                                            constructor_link_fillings,
-                                            constructor_tab_fillings,
-                                            constructor_tab_buns):
+    def test_constructor_page_buns_scroll_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_fillings)))
@@ -60,11 +49,8 @@ class TestConstructorPage:
             time.sleep(1)
             tab_buns_y = driver.find_element(By.XPATH, constructor_link_buns).location['y']
             assert (start_y - start_margin) == tab_buns_y
-        driver.quit()
 
-    def test_constructor_page_souses_tab_success(self, driver, main_page,
-                                            constructor_tab_souses,
-                                            constructor_active_tab):
+    def test_constructor_page_souses_tab_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_souses)))
@@ -73,11 +59,8 @@ class TestConstructorPage:
         time.sleep(1)
         active_tab = driver.find_element(By.XPATH, constructor_active_tab).text
         assert active_tab == "Соусы"
-        driver.quit()
 
-    def test_constructor_page_fillings_tab_success(self, driver, main_page,
-                                            constructor_tab_fillings,
-                                            constructor_active_tab):
+    def test_constructor_page_fillings_tab_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_fillings)))
@@ -86,12 +69,8 @@ class TestConstructorPage:
         time.sleep(1)
         active_tab = driver.find_element(By.XPATH, constructor_active_tab).text
         assert active_tab == "Начинки"
-        driver.quit()
 
-    def test_constructor_page_buns_tab_success(self, driver, main_page,
-                                                 constructor_tab_buns,
-                                                 constructor_tab_souses,
-                                                 constructor_active_tab):
+    def test_constructor_page_buns_tab_success(self, driver):
         driver.get(main_page)
         WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located((By.XPATH, constructor_tab_souses)))
@@ -103,4 +82,3 @@ class TestConstructorPage:
         time.sleep(1)
         active_tab = driver.find_element(By.XPATH, constructor_active_tab).text
         assert active_tab == "Булки"
-        driver.quit()
